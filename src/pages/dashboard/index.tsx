@@ -1,7 +1,6 @@
 import React from "react";
 import { Layout } from "../../../Layout";
-import ProjectSummary from "../../../common/Home/DashboardContent/ProjectSummary";
-import DashboardContent from "../../../common/Home/DashboardContent/Contents";
+import DashboardContent from "../../../common/Dashboard/DashboardContent/Contents";
 
 const dashboard = () => {
   return (

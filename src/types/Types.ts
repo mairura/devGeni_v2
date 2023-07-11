@@ -4,6 +4,12 @@ export interface NavType {
   active?: boolean;
 }
 
-export interface InBoxCardProps{
-  time:string;
+export interface InBoxCardProps {
+  time: string;
+}
+
+export interface ContactType {
+  name: string;
+  msg: string;
+  active?: boolean;
 }

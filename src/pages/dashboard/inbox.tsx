@@ -5,6 +5,7 @@ import {
   Divider,
   FormControl,
   Grid,
+  IconButton,
   InputAdornment,
   List,
   ListItem,
@@ -12,34 +13,60 @@ import {
   Paper,
   Stack,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { ChatMessage, ChatTime, Contact, MsgText } from "../../../common/Typos";
 import Image from "next/image";
 import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
 import SentimentSatisfiedOutlinedIcon from "@mui/icons-material/SentimentSatisfiedOutlined";
 import AttachFileOutlinedIcon from "@mui/icons-material/AttachFileOutlined";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { ContactType } from "@/types";
+
+const contacts: ContactType[] = [
+  { name: "Notifications", msg: "You have sent an offer to..." },
+  { name: "Antonio", msg: "Awesome! 3pm works great", active: true },
+  { name: "Phoebe", msg: "You have sent an offer to..." },
+  { name: "Wayne", msg: "You have sent an offer to..." },
+  { name: "Collins", msg: "You have sent an offer to..." },
+  { name: "David", msg: "You have sent an offer to..." },
+  { name: "Owen", msg: "You have sent an offer to..." },
+  { name: "Henry", msg: "You have sent an offer to..." },
+];
 
 const inboxPage = () => {
-  const contacts = [
-    { name: "Notifications", msg: "You have sent an offer to..." },
-    { name: "Antonio", msg: "Awesome! 3pm works great" },
-    { name: "Phoebe", msg: "You have sent an offer to..." },
-    { name: "Wayne", msg: "You have sent an offer to..." },
-    { name: "Collins", msg: "You have sent an offer to..." },
-    { name: "David", msg: "You have sent an offer to..." },
-    { name: "Owen", msg: "You have sent an offer to..." },
-    { name: "Henry", msg: "You have sent an offer to..." },
-  ];
   const [selectedContact, setSelectedContact] = useState(null);
+  const [openContact, setOpenContact] = useState(true);
+  const [openChat, setOpenChat] = useState(false);
 
-  const handleContactClick = (contact: any) => {
-    setSelectedContact(contact);
+  const handleContactClick = () => {
+    setOpenChat(true);
+    setOpenContact(false);
   };
+
+  const handleBackClick = () => {
+    setOpenChat(false);
+
+    setOpenContact(true);
+  };
+
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <div>
       <Layout>
         <Box
-          sx={{ marginLeft: "2.25rem", mt: "2.25rem", borderRadius: "15px" }}
+          sx={{
+            marginLeft: "2.25rem",
+            mt: "2.25rem",
+            borderRadius: "15px",
+            "@media(max-width:768px)": {
+              m: "1rem 0",
+            },
+          }}
         >
           {/* Chat title */}
           <Grid
@@ -49,67 +76,133 @@ const inboxPage = () => {
               borderBottom: "1px solid rgba(196, 196, 196, 0.35)",
             }}
           >
-            <Grid item xs={3}>
-              <Typography
-                sx={{ fontSize: "20px", fontWeight: 500, p: "1.3rem" }}
-              >
-                All Conversations
-              </Typography>
+            <Grid
+              item
+              xs={3}
+              sx={{
+                "@media(max-width:768px)": {
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "100%",
+                },
+              }}
+            >
+              {isSmallScreen ? (
+                <IconButton
+                  onClick={handleBackClick}
+                  sx={{ display: openContact ? "none" : "block" }}
+                >
+                  <ArrowBackIcon sx={{ algnSelf: "center" }} />
+                </IconButton>
+              ) : (
+                <Typography
+                  sx={{
+                    fontSize: "20px",
+                    fontWeight: 500,
+                    p: "1.3rem",
+                  }}
+                >
+                  All Conversations
+                </Typography>
+              )}
             </Grid>
             <Grid
               item
-              xs={9}
+              xs={openContact && isSmallScreen ? 12 : 9}
               sx={{
                 display: "flex",
                 alignItems: "center",
-                gap: "0.3rem",
+                justifyContent: "space-between",
                 p: "0.8rem",
                 borderLeft: "1px solid rgba(196, 196, 196, 0.35)",
               }}
             >
-              <Image
-                src={"/ProfilePhoto.svg"}
-                width={48}
-                height={48}
-                alt="Profile Photo"
-              />
-              <Box>
-                <Typography sx={{ fontSize: "20px", fontWeight: 300 }}>
-                  Antonio
-                </Typography>
-                <Box
-                  sx={{ display: "flex", alignItems: "center", gap: "0.3rem" }}
+              {openContact && isSmallScreen ? (
+                <Typography
+                  sx={{
+                    fontSize: "20px",
+                    fontWeight: 500,
+                    p: "1.3rem",
+                  }}
                 >
-                  <Typography
-                    sx={{ fontSize: "12px", fontWeight: 500, color: "#6e6e6e" }}
-                  >
-                    Active Now
-                  </Typography>
-                  <Box
-                    sx={{
-                      width: "8px",
-                      height: "8px",
-                      borderRadius: "50%",
-                      backgroundColor: "#7a9d00",
-                    }}
-                  ></Box>
-                </Box>
-              </Box>
+                  All Conversations
+                </Typography>
+              ) : (
+                <>
+                  <Box sx={{ display: "flex", gap: "0.3rem" }}>
+                    <Image
+                      src={"/ProfilePhoto.svg"}
+                      width={48}
+                      height={48}
+                      alt="Profile Photo"
+                    />
+                    <Box>
+                      <Typography sx={{ fontSize: "20px", fontWeight: 300 }}>
+                        {
+                          contacts.find((contact) => contact.active)?.name // Get the name of the active contact
+                        }
+                      </Typography>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "0.3rem",
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            fontSize: "12px",
+                            fontWeight: 500,
+                            color: "#6e6e6e",
+                          }}
+                        >
+                          Active Now
+                        </Typography>
+                        <Box
+                          sx={{
+                            width: "8px",
+                            height: "8px",
+                            borderRadius: "50%",
+                            backgroundColor: "#7a9d00",
+                          }}
+                        ></Box>
+                      </Box>
+                    </Box>
+                  </Box>
+                  <IconButton>
+                    <MoreVertIcon />
+                  </IconButton>
+                </>
+              )}
             </Grid>
           </Grid>
 
           {/* Chat container */}
           <Grid container component={Paper}>
-            <Grid item xs={3} md={3}>
+            <Grid item sm={12} md={3}>
               {/* Contact list */}
               <Stack
                 spacing={0.5}
                 py={2}
-                sx={{ backgroundColor: "#F6F5F5" }}
+                sx={{
+                  backgroundColor: "#F6F5F5",
+                  display: "block",
+                  "@media(max-width:768px)": {
+                    display: openContact ? "block" : "none",
+                  },
+                }}
                 divider={<Divider orientation="horizontal" flexItem />}
               >
                 {contacts.map((contact, index) => (
-                  <Box key={index} sx={{ p: "1rem 0 1rem 1.5rem" }}>
+                  <Box
+                    key={index}
+                    sx={{
+                      p: "1rem 0 1rem 1.5rem",
+                      backgroundColor:
+                        contact.active && !isSmallScreen ? "#fff" : "inherit",
+                    }}
+                  >
                     <Stack
                       spacing={0.5}
                       direction="row"
@@ -118,6 +211,7 @@ const inboxPage = () => {
                         alignItems: "center",
                         justifyContent: "space-around",
                       }}
+                      onClick={handleContactClick}
                     >
                       <Box
                         sx={{ display: "flex", alignItems: "center", gap: 1 }}
@@ -144,14 +238,25 @@ const inboxPage = () => {
             </Grid>
 
             {/* Chat messages */}
-            <Grid item xs={9} sx={{ height: "100%" }}>
+            <Grid
+              item
+              sm={12}
+              md={9}
+              sx={{
+                height: "100%",
+                "@media(max-width:768px)": {
+                  display: openContact ? "none" : "block",
+                },
+              }}
+            >
               <List>
                 {/* Outgoing message */}
                 <ListItem key="1">
                   <Grid container justifyContent="flex-end">
                     <Grid
                       item
-                      xs={6}
+                      sm={10}
+                      md={6}
                       sx={{
                         backgroundColor: "#F7FFDA",
                         borderRadius: "15px 15px 0px 15px",
@@ -171,10 +276,11 @@ const inboxPage = () => {
                   <Grid container justifyContent="flex-start">
                     <Grid
                       item
-                      xs={6}
+                      sm={10}
+                      md={6}
                       sx={{
                         backgroundColor: "#C1F8FC",
-                        borderRadius: "15px 15px 0px 15px",
+                        borderRadius: "15px 15px 15px 0px",
                         padding: "0.4rem",
                       }}
                     >
@@ -192,7 +298,8 @@ const inboxPage = () => {
                   <Grid container justifyContent="flex-end">
                     <Grid
                       item
-                      xs={6}
+                      sm={10}
+                      md={6}
                       sx={{
                         backgroundColor: "#F7FFDA",
                         borderRadius: "15px 15px 0px 15px",
@@ -213,10 +320,11 @@ const inboxPage = () => {
                   <Grid container justifyContent="flex-start">
                     <Grid
                       item
-                      xs={6}
+                      sm={10}
+                      md={6}
                       sx={{
                         backgroundColor: "#C1F8FC",
-                        borderRadius: "15px 15px 0px 15px",
+                        borderRadius: "15px 15px 15px 0px",
                         padding: "0.4rem",
                       }}
                     >
@@ -232,7 +340,8 @@ const inboxPage = () => {
                   <Grid container justifyContent="flex-end">
                     <Grid
                       item
-                      xs={6}
+                      sm={10}
+                      md={6}
                       sx={{
                         backgroundColor: "#F7FFDA",
                         borderRadius: "15px 15px 0px 15px",
@@ -254,10 +363,11 @@ const inboxPage = () => {
                   <Grid container justifyContent="flex-start">
                     <Grid
                       item
-                      xs={6}
+                      sm={10}
+                      md={6}
                       sx={{
                         backgroundColor: "#C1F8FC",
-                        borderRadius: "15px 15px 0px 15px",
+                        borderRadius: "15px 15px 15px 0px",
                         padding: "0.4rem",
                       }}
                     >
