@@ -40,7 +40,7 @@ const developer = () => {
               </HeroText>
               <HeroButtons>
                 <HeroButton>Sign In with Google</HeroButton>
-                <HeroButton>Sign In with GITHUB</HeroButton>
+                <HeroButton>Sign In with Github</HeroButton>
               </HeroButtons>
             </HeroSection>
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
