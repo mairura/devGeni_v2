@@ -1,8 +1,8 @@
 import Head from "next/head";
-import PrimaryAppBar from "../common/Home/Navbar";
+import PrimaryAppBar from "../common/Dashboard/Navbar";
 import { ReactNode } from "react";
 import { Box } from "@mui/material";
-import Sidebar from "../common/Home/Sidebar";
+import Sidebar from "../common/Dashboard/Sidebar";
 
 interface Homeinterface {
   children: ReactNode;
