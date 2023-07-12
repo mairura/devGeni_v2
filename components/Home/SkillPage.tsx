@@ -47,7 +47,6 @@ const SkillPage = () => {
             
           </Box>
         </SkillContainer>
-          {/* <Box sx={{ height: "20vh", background: "#fff", width: "100vw"}}></Box> */}
       </Container>
     </Box>
   );

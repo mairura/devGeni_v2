@@ -31,7 +31,7 @@ const developer = () => {
                 Join <span style={{ color: "#29CC7A" }}>2000+</span> Developers
                 & Get Started as a
                 <span style={{ color: "#29CC7A" }}> Developer</span> on{" "}
-                <span style={{ color: "#29CC7A" }}>DevGeni</span>{" "}
+                <span style={{ color: "#29CC7A" }}>DevGeni.</span>{" "}
               </HeroTitle>
               <HeroText sx={{ pt: 2, pb: 8 }}>
                 Access individual talent, innovative developer teams and
@@ -39,8 +39,8 @@ const developer = () => {
                 specific needs
               </HeroText>
               <HeroButtons>
-                <HeroButton>Sign In with Google</HeroButton>
-                <HeroButton>Sign In with Github</HeroButton>
+                <HeroButton>Sign In with google</HeroButton>
+                <HeroButton>Sign In with GITHUB</HeroButton>
               </HeroButtons>
             </HeroSection>
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
