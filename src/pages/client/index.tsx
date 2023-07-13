@@ -25,7 +25,7 @@ const index = () => {
               <HeroTitle>
                 Get started and <span style={{ color: "#29CC7A" }}>build</span>{" "}
                 projects easily on
-                <span style={{ color: "#29CC7A" }}><br /> DevGeni.</span>{" "}
+                <span style={{ color: "#29CC7A" }}><br /> DevGeni</span>{" "}
               </HeroTitle>
               <HeroText sx={{ pt: 2, pb: 8 }}>
                 Access individual talent, innovative developer teams and
