@@ -16,8 +16,6 @@ import SkillPage from "../../components/Home/SkillPage";
 
 const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
-const theme = useTheme();
-const colorMode = useContext(ColorModeContext);
 
 function MyApp() {
   const theme = useTheme();
