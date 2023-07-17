@@ -12,6 +12,7 @@ import { HeroButton } from "../../../common/Home/ButtonsPage";
 import { useRouter } from "next/router";
 import FooterPage from "../../../components/Home/FooterPage";
 import { ProjectData } from "../../../components/Home/Data";
+import { Fade } from "react-awesome-reveal";
 
 const index = () => {
   const router = useRouter();
@@ -22,10 +23,11 @@ const index = () => {
         <Container maxWidth="xl">
           <HeroContainer>
             <HeroSection>
+            <Fade direction="up" cascade damping={0.5}>
               <HeroTitle>
                 Get started and <span style={{ color: "#29CC7A" }}>build</span>{" "}
                 projects easily on
-                <span style={{ color: "#29CC7A" }}><br /> DevGeni</span>{" "}
+                <span style={{ color: "#29CC7A" }}><br /> DevGeni.</span>{" "}
               </HeroTitle>
               <HeroText sx={{ pt: 2, pb: 8 }}>
                 Access individual talent, innovative developer teams and
@@ -36,6 +38,7 @@ const index = () => {
                 <HeroButton>Sign In with google</HeroButton>
                 <HeroButton>Sign In with linkedin</HeroButton>
               </HeroButtons>
+              </Fade>
             </HeroSection>
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <Image

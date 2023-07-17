@@ -8,7 +8,6 @@ export const HeroTitle = styled(Typography)(({ theme: Theme }) => ({
   fontWeight: 700,
   lineHeight: "72px",
   width: "50vw",
-  color: "#fff",
   [theme.breakpoints.down("md")]: {
     fontSize: "2.5rem",
     width: "100%",
@@ -30,24 +29,23 @@ export const HeroText = styled(Typography)(({ theme: Theme }) => ({
 }));
 
 export const PartnersText = styled(Typography)(({ theme: Theme }) => ({
-  color: "#fff",
   fontFamily: "Roboto Mono",
   fontWeight: 500,
   fontSize: "1rem",
   lineHeight: "21px",
   [theme.breakpoints.down("md")]: {
-    fontSize: ".8rem"
-  }
+    fontSize: ".8rem",
+  },
 }));
 
 export const AboutHeader = styled(Typography)(({ theme: Theme }) => ({
-  background:
-    "linear-gradient(269.86deg, #A8EB8C 13.54%, #FFFFFF 50.52%, #348CF4 85.94%)",
+  // background:
+  //   "linear-gradient(269.86deg, #A8EB8C 13.54%, #fff 50.52%, #348CF4 85.94%)",
   fontFamily: "Roboto Mono",
   fontWeight: 700,
   fontSize: "2.5rem",
   WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
+  // WebkitTextFillColor: "transparent",
   lineHeight: "60px",
   [theme.breakpoints.down("md")]: {
     display: "flex",
@@ -61,7 +59,7 @@ export const AboutText = styled(Typography)(({ theme: Theme }) => ({
   fontSize: "1rem",
   fontFamily: "Montserrat",
   lineHeight: "31.96px",
-  letterSpacing: "0.51px"
+  letterSpacing: "0.51px",
 }));
 
 export const Header = styled(Typography)(({ theme: Theme }) => ({
@@ -83,7 +81,7 @@ export const SubHeader = styled(Typography)(({ theme: Theme }) => ({
   fontSize: "1.2rem",
   paddingBottom: theme.spacing(1.5),
   fontFamily: "Montserrat",
-  lineHeight: "28px"
+  lineHeight: "28px",
 }));
 
 export const HeaderText = styled(Typography)(({ theme: Theme }) => ({
@@ -91,25 +89,25 @@ export const HeaderText = styled(Typography)(({ theme: Theme }) => ({
   fontWeight: 500,
   fontSize: "15px",
   fontFamily: "Montserrat",
-  lineHeight: "26px"
+  lineHeight: "26px",
 }));
 
 export const LinkLabel = styled(Typography)(({ theme: Theme }) => ({
   background: "linear-gradient(90deg, #73D1A4 0%, #99E493 100%)",
   WebkitBackgroundClip: "text",
   WebkitTextFillColor: "transparent",
-  fontSize:"1.2rem",
-  fontWeight:600,
+  fontSize: "1.2rem",
+  fontWeight: 600,
 }));
 
 export const SubTitle = styled(Typography)(({ theme: Theme }) => ({
   color: "#FFF",
-  fontFamily:"Roboto Mono",
+  fontFamily: "Roboto Mono",
   fontWeight: 500,
   fontSize: "4rem",
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down("sm")]: {
     fontSize: "1.5rem",
-    paddingBottom:".5rem"
+    paddingBottom: ".5rem",
   },
 }));
 
@@ -118,7 +116,7 @@ export const IntroText = styled(Typography)(({ theme: Theme }) => ({
   fontWeight: 400,
   fontSize: "1.2rem",
   fontFamily: "Montserrat",
-  paddingTop: theme.spacing(3)
+  paddingTop: theme.spacing(4),
 }));
 
 export const DevGeniText = styled(Typography)(({ theme: Theme }) => ({
@@ -133,7 +131,6 @@ export const DevGeniText = styled(Typography)(({ theme: Theme }) => ({
   }
 }));
 export const FooterSocialText = styled(Typography)(({ theme: Theme }) => ({
-  color: "rgba(255, 255, 255, 0.70)",
   fontFamily: "Roboto Mono",
   fontSize: "12px",
   fontWeight: 400,
@@ -155,7 +152,7 @@ export const FooterCheckboxText = styled(Typography)(({ theme: Theme }) => ({
   fontFamily: "Montserrat",
   fontSize: "10px",
   fontWeight: 400,
-  color: "rgba(255, 255, 255, 0.70)",
+  
 }));
 
 export const FooterText = styled(Typography)(({ theme: Theme }) => ({
@@ -163,7 +160,7 @@ export const FooterText = styled(Typography)(({ theme: Theme }) => ({
   fontFamily: "Manrope",
   fontWeight: 300,
   lineHeight: "21px",
-  color: "rgba(255, 255, 255, 0.70)",
+  
   paddingBottom: theme.spacing(1),
   cursor: "pointer",
 }));
@@ -179,7 +176,7 @@ export const FooterTextTitle = styled(Typography)(({ theme: Theme }) => ({
 }));
 
 export const FooterTextCopright = styled(Typography)(({ theme: Theme }) => ({
-  color: "rgba(255, 255, 255, 0.70)",
+  
   fontFamily: "Montserrat",
   fontWeight: 400,
   lineHeight: "18px",
@@ -197,8 +194,8 @@ export const SkillsHeader = styled(Typography)(({ theme: Theme }) => ({
   fontSize: "24px",
   paddingBottom: "2rem",
   [theme.breakpoints.down("md")]: {
-    fontSize: "1.2rem"
-  }
+    fontSize: "1.2rem",
+  },
 }));
 
 export const SkillsTitle = styled(Typography)(({ theme: Theme }) => ({
@@ -216,7 +213,7 @@ export const SkillsTitle = styled(Typography)(({ theme: Theme }) => ({
 }));
 
 export const SkillsSubTitle = styled(Typography)(({ theme: Theme }) => ({
-  color: "#A2A2A2",
+  
   fontSize: "16px",
   fontFamily: "Montserrat",
   lineHeight: "40px",
@@ -236,5 +233,5 @@ export const TagHashText = styled(Typography)(({ theme: Theme})=> ({
   fontFamily: "Montserrat",
   fontSize: "15px",
   fontWeight: 300,
-  color: "#fff"
+  
 }))

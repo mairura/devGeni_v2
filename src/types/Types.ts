@@ -13,3 +13,8 @@ export interface ContactType {
   msg: string;
   active?: boolean;
 }
+
+export interface ProjectType {
+  url: string;
+  alt: string;
+}

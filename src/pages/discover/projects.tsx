@@ -1,13 +1,11 @@
 import { Search } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Container,
   Grid,
   IconButton,
   InputAdornment,
   TextField,
-  Typography,
 } from "@mui/material";
 import React from "react";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
@@ -25,7 +23,7 @@ import { TagFilter, TagsContainer } from "../../../common/Home/ContainerPage";
 import { TagHashText } from "../../../common/Home/TyposPage";
 import { FilteredTags } from "../../../common/Home/GridPages";
 
-const projects = () => {
+const projects = ({ theme, mode }: any) => {
   return (
     <Box>
       <Container maxWidth="xl">
@@ -45,15 +43,23 @@ const projects = () => {
                   notchedOutline: "customTextField",
                 },
                 style: {
-                  color: "white", // Change color of typed text inside TextField
+                  color: mode === "light" ? "#262626" : "white", // Change color of typed text inside TextField
                   padding: "15px 20px",
+                  border:
+                    mode === "light"
+                      ? "2px solid rgba(38, 38, 38, 0.40)"
+                      : "2px solid rgba(255, 255, 255, 0.40)",
+                  borderRadius: "3.125rem",
                 },
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton
                       style={{
                         fontSize: "4rem",
-                        color: "rgba(255, 255, 255, 0.40)",
+                        color:
+                          mode === "light"
+                            ? "rgba(0, 0, 0, 0.40)"
+                            : "rgba(255, 255, 255, 0.40)",
                       }}
                     >
                       <Search />
@@ -65,7 +71,15 @@ const projects = () => {
           </Box>
 
           <TagsContainer>
-            <TagFilter>
+            <TagFilter
+              sx={{
+                color: mode === "light" ? "rgba(38, 38, 38, 0.60)" : "#fff",
+                border:
+                  mode === "light"
+                    ? "1px solid rgba(38, 38, 38, 0.40)"
+                    : "1px solid rgba(255, 255, 255, 0.70)",
+              }}
+            >
               Filters&nbsp;
               <FilterAltIcon />
             </TagFilter>
@@ -79,7 +93,15 @@ const projects = () => {
               {Tags.map((tag, index) => {
                 return (
                   <FilteredTags
-                    key={index}>
+                    sx={{
+                      border:
+                        mode === "light"
+                          ? "0.2px solid #17022D"
+                          : "1px solid rgba(255, 255, 255, 0.60)",
+                      color: mode === "light" ? "#17022d" : "#fff",
+                    }}
+                    key={index}
+                  >
                     {tag.name}
                   </FilteredTags>
                 );
@@ -93,7 +115,7 @@ const projects = () => {
               alignContent: "center",
               alignItems: "center",
               my: 10,
-              color: "rgba(255, 255, 255, 0.60)",
+              color: mode === "light" ? "#262626" : "rgba(255, 255, 255, 0.60)",
               fontFamily: "Roboto Mono",
               fontWeight: 700,
               fontSize: "1rem",
@@ -119,8 +141,9 @@ const projects = () => {
                     mx: 3,
                     mb: 5,
                     borderRadius: "10px",
-                    border: "1px solid #12201B",
-                    background: "#12201B",
+                    border:
+                      mode === "light" ? "1px solid #FFF" : "1px solid #12201B",
+                    background: mode === "light" ? "#fff" : "#12201B",
                     boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
                   }}
                   xs={12}
@@ -141,7 +164,7 @@ const projects = () => {
                     <Box
                       sx={{
                         display: "flex",
-                        color: "#fff",
+                        color: mode === "light" ? "#17022d" : "#fff",
                         justifyContent: "space-between",
                         px: 2,
                       }}
@@ -178,10 +201,10 @@ const projects = () => {
                     </Box>
                     <Box
                       sx={{
-                        color: "#fff",
                         fontFamily: "Roboto Mono",
                         fontWeight: 300,
                         p: 2,
+                        color: mode === "light" ? "#17022d" : "#fff",
                       }}
                     >
                       {item.description}
@@ -194,7 +217,20 @@ const projects = () => {
                       height="auto"
                     >
                       {TagList.map((tag, index) => {
-                        return <TagButton>{tag.name}</TagButton>;
+                        return (
+                          <TagButton
+                            sx={{
+                              border:
+                                mode === "light"
+                                  ? "0.2px solid #17022D"
+                                  : "0.2px solid #FFF",
+                              color: mode === "light" ? "#17022D" : "#fff",
+                              background: mode === "light" ? "#fff" : "#12201B",
+                            }}
+                          >
+                            {tag.name}
+                          </TagButton>
+                        );
                       })}
                     </Grid>
                     <Grid
@@ -206,7 +242,11 @@ const projects = () => {
                     >
                       {TagHashtags.map((item, index) => {
                         return (
-                          <TagHashText>
+                          <TagHashText
+                            sx={{
+                              color: mode === "light" ? "#17022D" : "#fff",
+                            }}
+                          >
                             #{item.name}
                           </TagHashText>
                         );
@@ -221,7 +261,14 @@ const projects = () => {
                         my: 2,
                       }}
                     >
-                      <AppBtn>
+                      <AppBtn
+                        sx={{
+                          color: mode === "light" ? "#fff" : "#12201B",
+                          "&:hover": {
+                            color: mode === "light" ? "#12201B" : "#fff",
+                          },
+                        }}
+                      >
                         Launch App &nbsp;
                         <Image
                           src="/right.svg"
@@ -230,7 +277,14 @@ const projects = () => {
                           alt="icon"
                         />{" "}
                       </AppBtn>
-                      <AppBtn>
+                      <AppBtn
+                        sx={{
+                          color: mode === "light" ? "#fff" : "#12201B",
+                          "&:hover": {
+                            color: mode === "light" ? "#12201B" : "#fff",
+                          },
+                        }}
+                      >
                         Build App &nbsp;
                         <Image
                           src="/sharp.svg"

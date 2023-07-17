@@ -1,6 +1,5 @@
 import { Box, IconButton, useTheme } from "@mui/material";
 import Head from "next/head";
-import ProjectSummary from "../../common/Dashboard/DashboardContent/ProjectSummary";
 import NavbarPage from "../../components/Home/NavbarPage";
 import LandingPage from "../../components/Home/LandingPage";
 import PartnersPage from "../../components/Home/PartnersPage";
@@ -9,39 +8,22 @@ import AboutDevgeni from "../../components/Home/AboutDevgeniPage";
 import ServicesPage from "../../components/Home/ServicePage";
 import BuildPage from "../../components/Home/BuildPage";
 import { createTheme } from "@mui/material/styles";
-import React from "react";
+import React, { createContext, useContext } from "react";
 import { ThemeProvider } from "@emotion/react";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 import FooterPage from "../../components/Home/FooterPage";
 import SkillPage from "../../components/Home/SkillPage";
 
-const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+const ColorModeContext = createContext({ toggleColorMode: () => {} });
+
 
 function MyApp() {
   const theme = useTheme();
-  const colorMode = React.useContext(ColorModeContext);
+  const colorMode = useContext(ColorModeContext);
   return (
-    <Box
-      sx={{
-        display: "flex",
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-        bgcolor: "background.default",
-        color: "text.primary",
-        borderRadius: 1,
-        p: 3,
-      }}
-    >
-      {theme.palette.mode} mode
-      <IconButton
-        sx={{ ml: 1 }}
-        onClick={colorMode.toggleColorMode}
-        color="inherit"
-      >
-        {theme.palette.mode === "dark" ? <Brightness7 /> : <Brightness4 />}
-      </IconButton>
-    </Box>
+    <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode}>
+      {theme.palette.mode === "dark" ? <Brightness7 /> : <Brightness4 />}
+    </IconButton>
   );
 }
 
@@ -74,18 +56,18 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ColorModeContext.Provider value={colorMode}>
+      <ColorModeContext.Provider value={ colorMode }>
         <ThemeProvider theme={theme}>
-          <Box sx={{ background: "#000F08" }}>
-            <NavbarPage />
-            <LandingPage />
-            <PartnersPage />
-            <ProjectsPage />
-            <AboutDevgeni />
-            <ServicesPage />
-            <BuildPage />
-            <SkillPage />
-            <FooterPage />
+          <Box sx={{ background: mode === "light" ? "#fff" : "#000f08" }}>
+            <NavbarPage theme={theme} colorMode={colorMode} mode={mode} />
+            <LandingPage theme={theme} mode={mode} />
+            <PartnersPage theme={theme} mode={mode} />
+            <ProjectsPage theme={theme} mode={mode} />
+            <AboutDevgeni theme={theme} mode={mode} />
+            <ServicesPage theme={theme} mode={mode} />
+            <BuildPage theme={theme} mode={mode} />
+            <SkillPage theme={theme} mode={mode} />
+            <FooterPage theme={theme} mode={mode} />
           </Box>
         </ThemeProvider>
       </ColorModeContext.Provider>

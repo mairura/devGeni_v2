@@ -1,4 +1,4 @@
-import { Box, createTheme, styled } from "@mui/material";
+import { Box, Button, createTheme, styled } from "@mui/material";
 
 const theme = createTheme();
 
@@ -13,13 +13,12 @@ export const ContainerWrapper = styled(Box)(({ theme: Theme }) => ({
 export const HeroContainer = styled(Box)(({ theme: Theme }) => ({
   display: "flex",
   color: "#fff",
-  paddingTop: Theme.spacing(6),
 }));
 
 export const HeroSection = styled(Box)(({ theme: Theme }) => ({
   display: "flex",
   flexDirection: "column",
-  paddingTop: theme.spacing(10),
+  paddingTop: theme.spacing(20),
   [theme.breakpoints.down("md")]: {
     paddingTop: theme.spacing(1),
   },
@@ -48,7 +47,7 @@ export const FooterContainer = styled(Box)(({ theme: Theme }) => ({}));
 
 export const FooterSocialBox = styled(Box)(({ theme: Theme }) => ({
   borderRadius: "16px",
-  background: "rgba(226, 230, 247, 0.08)",
+
   padding: "40px 40px 26px 40px",
   marginBottom: theme.spacing(3),
   [theme.breakpoints.down("md")]: {
@@ -123,7 +122,7 @@ export const FooterCopyright = styled(Box)(({ theme: Theme }) => ({
 
 export const SkillContainer = styled(Box)(({ theme: Theme }) => ({
   display: "flex",
-  background: "#12201B",
+
   borderRadius: "20px",
   [theme.breakpoints.down("md")]: {
     padding: "20px",
@@ -182,11 +181,9 @@ export const DiscoverHeader = styled(Box)(({ theme: Theme }) => ({
   },
 }));
 
-export const TagFilter = styled(Box)(({ theme: Theme})=> ({
+export const TagFilter = styled(Box)(({ theme: Theme }) => ({
   borderRadius: "10px",
-  border: "1px solid rgba(255, 255, 255, 0.70)",
   padding: "20px 60px",
-  color: "#fff",
   fontFamily: "Roboto Mono",
   fontWeight: 700,
   fontSize: "1rem",
@@ -197,9 +194,9 @@ export const TagFilter = styled(Box)(({ theme: Theme})=> ({
   textAlign: "center",
   height: "6vh",
   [theme.breakpoints.down("md")]: {
-    marginBottom: theme.spacing(3)
-  }
-}))
+    marginBottom: theme.spacing(3),
+  },
+}));
 
 export const TagsContainer = styled(Box)(({ theme: Theme }) => ({
   display: "flex",
@@ -215,6 +212,28 @@ export const TagsContainer = styled(Box)(({ theme: Theme }) => ({
   alignSelf: "center",
   [theme.breakpoints.down("md")]: {
     display: "flex",
-    flexDirection: "column"
-  }
+    flexDirection: "column",
+  },
+}));
+
+export const DotsContainer = styled(Box)(({ theme: Theme }) => ({
+  display: "flex",
+  width: "100%",
+  alignItems: "center",
+  justifyContent: "center",
+  marginBottom: "2rem",
+  gap: "5px",
+}));
+
+export const Dot = styled(Button)(({ theme: Theme }) => ({
+  borderRadius: "5px",
+  height: "10px",
+  border: "none",
+  outline: "none",
+  cursor: "pointer",
+  padding: "0",
+
+  "&:hover": {
+    backgroundColor: "grey",
+  },
 }));

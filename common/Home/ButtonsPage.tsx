@@ -9,12 +9,11 @@ export const HeroButton = styled(Button)(({ theme: Theme }) => ({
   background: "transparent",
   padding: "13.5px 24.61px 13.5px 25.39px",
   fontFamily: "Poppins",
-  border: "1px solid #65CAAB",
   marginRight: theme.spacing(3),
   fontWeight: 700,
   fontSize: ".8rem",
   "&:hover": {
-    background: "#65CAAB",
+    background: "#29cc7a",
   },
   [theme.breakpoints.down("md")]: {
     fontSize: ".8rem",
@@ -24,7 +23,6 @@ export const HeroButton = styled(Button)(({ theme: Theme }) => ({
 
 export const HeroButton1 = styled(HeroButton)(({ theme: Theme }) => ({
   background: "linear-gradient(90deg, #CFF276 0%, #48BDB3 100%)",
-  
 }));
 export const FooterSubscribeBtn = styled(Button)(({ theme: Theme }) => ({
   borderRadius: "48px",
@@ -37,8 +35,11 @@ export const FooterSubscribeBtn = styled(Button)(({ theme: Theme }) => ({
   textTransform: "uppercase",
   fontWeight: 700,
   fontSize: "14px",
+
   "&:hover": {
-    border: "1px solid #29CC7A",
+    background: "#fff",
+    color: "#29CC7A",
+    border: "none",
   },
   [theme.breakpoints.down("md")]: {
     marginTop: theme.spacing(2),
@@ -50,7 +51,7 @@ export const FooterSubscribeBtn = styled(Button)(({ theme: Theme }) => ({
 
 export const FooterSocialBtn = styled(Button)(({ theme: Theme }) => ({
   borderRadius: "48px",
-  border: "2px solid rgba(255, 255, 255, 0.40)",
+
   padding: "7px 18px 7px 18px",
   color: "rgba(255, 255, 255, 0.90)",
   textTransform: "uppercase",
@@ -68,13 +69,13 @@ export const FooterSocialBtn = styled(Button)(({ theme: Theme }) => ({
   },
 }));
 
-export const SkillsBtn = styled(Button)(({ theme: Theme})=> ({
-  border: "1px solid #29CC7A",
+export const SkillsBtn = styled(Button)(({ theme: Theme }) => ({
+  border: "1px solid #fff",
   padding: "8px 25px",
   borderRadius: "40px",
   fontFamily: "Roboto Mono",
   lineHeight: "28px",
-  fontWeight: 700, 
+  fontWeight: 700,
   fontSize: "12px",
   color: "#fff",
   marginTop: theme.spacing(5),
@@ -82,20 +83,20 @@ export const SkillsBtn = styled(Button)(({ theme: Theme})=> ({
     color: "#29CC7A",
     background: "#fff",
   },
-}))
+}));
 
-export const AppBtn = styled(Button)(({ theme: Theme})=> ({
+export const AppBtn = styled(Button)(({ theme: Theme }) => ({
   background: "#29CC7A",
   borderRadius: "5px",
   padding: "10px",
-  color: "#12201B",
+  
   fontWeight: 500,
   fontFamily: "Montserrat",
   marginLeft: theme.spacing(3),
   marginRight: theme.spacing(3),
   "&:hover": {
     color: "#fff",
-    border: "1px solid #29CC7A"
+    border: "1px solid #29CC7A",
   },
   [theme.breakpoints.down("md")]: {
     padding: "7px",
@@ -103,15 +104,14 @@ export const AppBtn = styled(Button)(({ theme: Theme})=> ({
     display: "flex",
     alignContent: "center",
     alignItems: "center",
-   
-  }
-}))
+  },
+}));
 
-export const TagButton = styled(Button)(({ theme: Theme})=> ({
+export const TagButton = styled(Button)(({ theme: Theme }) => ({
   borderRadius: "15px",
-  border: "0.2px solid #FFF",
-  background: "#12201B",
-  color: "#fff",
+ 
+  
+  
   marginTop: theme.spacing(1),
   marginBottom: theme.spacing(1),
   marginLeft: theme.spacing(1),
@@ -120,5 +120,5 @@ export const TagButton = styled(Button)(({ theme: Theme})=> ({
   fontSize: "10px",
   [theme.breakpoints.down("md")]: {
     fontSize: "8px",
-  }
-}))
+  },
+}));

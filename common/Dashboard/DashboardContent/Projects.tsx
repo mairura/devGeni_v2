@@ -12,7 +12,7 @@ import { SectionHeading } from "../../Typos";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ProjectCard from "../ProjectCard";
 
-function Projects() {
+function Projects({ theme, colorMode }: any) {
   return (
     <Grid
       item
