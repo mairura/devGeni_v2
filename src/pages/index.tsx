@@ -8,17 +8,20 @@ import AboutDevgeni from "../../components/Home/AboutDevgeniPage";
 import ServicesPage from "../../components/Home/ServicePage";
 import BuildPage from "../../components/Home/BuildPage";
 import { createTheme } from "@mui/material/styles";
-import React from "react";
+import React, { createContext, useContext } from "react";
 import { ThemeProvider } from "@emotion/react";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 import FooterPage from "../../components/Home/FooterPage";
 import SkillPage from "../../components/Home/SkillPage";
 
-const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+const ColorModeContext = createContext({ toggleColorMode: () => {} });
+
+const theme = useTheme();
+const colorMode = useContext(ColorModeContext);
 
 function MyApp() {
   const theme = useTheme();
-  const colorMode = React.useContext(ColorModeContext);
+  const colorMode = useContext(ColorModeContext);
   return (
     <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode}>
       {theme.palette.mode === "dark" ? <Brightness7 /> : <Brightness4 />}
@@ -55,7 +58,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ColorModeContext.Provider value={colorMode}>
+      <ColorModeContext.Provider value={ colorMode }>
         <ThemeProvider theme={theme}>
           <Box sx={{ background: mode === "light" ? "#fff" : "#000f08" }}>
             <NavbarPage theme={theme} colorMode={colorMode} mode={mode} />
