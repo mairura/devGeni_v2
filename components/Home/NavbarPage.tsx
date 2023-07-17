@@ -273,8 +273,8 @@ const NavbarPage = ({ theme, colorMode, mode }: any) => {
               Sign In
             </Button>
 
-            <IconButton
-              // onClick={colorMode.toggleColorMode}
+            {/* <IconButton
+              onClick={colorMode.toggleColorMode}
               sx={{ ml: 1, color: mode === "light" ? "#000F08" : "#fff" }}
             >
               {theme.palette.mode === "#000F08" ? (
@@ -282,7 +282,7 @@ const NavbarPage = ({ theme, colorMode, mode }: any) => {
               ) : (
                 <Brightness4 />
               )}
-            </IconButton>
+            </IconButton> */}
           </Box>
         </Toolbar>
       </Container>
