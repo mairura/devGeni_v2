@@ -279,7 +279,7 @@ const NavbarPage = ({ theme, colorMode, mode }: any) => {
               onClick={toggleColorMode}
               sx={{ ml: 1, color: mode === "light" ? "#000F08" : "#fff" }}
             >
-              {theme.palette.mode === "#000F08" ? (
+              {mode === "#000F08" ? (
                 <Brightness7 />
               ) : (
                 <Brightness4 />
