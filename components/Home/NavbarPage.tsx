@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Brightness4, Brightness7 } from "@mui/icons-material";
 import {
   AppBar,
   Box,
@@ -10,6 +11,7 @@ import {
   Paper,
   Toolbar,
   Typography,
+  useTheme,
 } from "@mui/material";
 import React from "react";
 import Menu from "@mui/material/Menu";
@@ -20,16 +22,15 @@ import { AuthContext } from "@/context/AuthContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-const pages = ["Home", "Discover", "Resources", "Contacts"];
 const items = [
-  { label: 'Home', link: '/' },
-  { label: 'Discover', link: '/discover' },
-  'Resources', 
-  'Contacts'
+  { id: 1, label: "Home", url: "/" },
+  { id: 2, label: "Discover", url: "/discover" },
+  { id: 3, label: "Resources" },
+  { id: 4, label: "Contacts" },
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-const NavbarPage = () => {
+const NavbarPage = ({ theme, colorMode, mode }: any) => {
   const router = useRouter();
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -47,7 +48,7 @@ const NavbarPage = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
+  
   const handleSignin = () => {
     login();
   };
@@ -56,7 +57,7 @@ const NavbarPage = () => {
     <AppBar
       position="static"
       sx={{
-        backgroundColor: "#00201C",
+        backgroundColor: mode === "light" ? "#ffffff" : "#00201c",
         height: "80px",
         display: "flex",
         justifyContent: "center",
@@ -117,77 +118,105 @@ const NavbarPage = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              {items.map((item, index) => {
+              if (index < 2) {
+                return (
+                  <Link href={{ pathname: item.url }} key={item.id} style={{ textDecoration: 'none' }}>
+                    <Button
+                      sx={{
+                        my: 2,
+                        color: "white",
+                        display: "block",
+                        textTransform: "capitalize",
+                        fontFamily: "Montserrat",
+                        pr: 5,
+                        "&:hover": {
+                          color: "#5EC7AE",
+                          background: "transparent",
+                        },
+                      }}
+                      key={index}
+                    >
+                      {item.label}
+                    </Button>
+                  </Link>
+                );
+              } else {
+                return (
+                  <Button
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      my: 2,
+                      color: "white",
+                      display: "block",
+                      textTransform: "capitalize",
+                      fontFamily: "Montserrat",
+                      pr: 5,
+                      "&:hover": {
+                        color: "#5EC7AE",
+                        background: "transparent",
+                      },
+                    }}
+                    key={item.id}
+                  >
+                    {item.label}
+                  </Button>
+                );
+              }
+              })}
             </Menu>
           </Box>
 
+          {/* End of Mobile View */}
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-          {/* {items.map((item, index) => {
-        if (index === 0 && item.link) {
-          return (
-            <Link href={item.link} as={item.link} key={index}>
-              <Typography component="a" variant="body1">
-                {item.label}
-              </Typography>
-            </Link>
-          );
-        } else if (index === 1 && item.link) {
-          return (
-            <Link href={item.link} as={item.link} key={index}>
-              <Typography component="a" variant="body1">
-                {item.label}
-              </Typography>
-            </Link>
-          );
-        } else {
-          return (
-            <Typography key={index} component="p" variant="body1">
-              {item}
-            </Typography>
-          );
-        }
-      })} */}
-            {pages.map((page, index) => {
-              if (index === 1) {
-                return <Button
-                sx={{
-                  my: 2,
-                  color: "white",
-                  display: "block",
-                  textTransform: "capitalize",
-                  fontFamily: "Montserrat",
-                  pr: 5,
-                  "&:hover": {
-                    color: "#5EC7AE",
-                    background: "transparent",
-                  },
-                }}key={index} onClick={() => router.push("/discover")}>{page}</Button>;
+            {items.map((item, index) => {
+              if (index < 2) {
+                return (
+                  <Link href={{ pathname: item.url }} key={item.id} style={{ textDecoration: 'none' }}>
+                    <Button
+                      sx={{
+                        my: 2,
+                        color: mode === "light" ? "#000000" : "#ffffff",
+                        display: "block",
+                        textTransform: "capitalize",
+                        fontFamily: "Montserrat",
+                        pr: 5,
+                        "&:hover": {
+                          color: "#5EC7AE",
+                          background: "transparent",
+                        },
+                      }}
+                      key={index}
+                    >
+                      {item.label}
+                    </Button>
+                  </Link>
+                );
+              } else {
+                return (
+                  <Button
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      my: 2,
+                      color: mode === "light" ? "#000000" : "#ffffff",
+                      display: "block",
+                      textTransform: "capitalize",
+                      fontFamily: "Montserrat",
+                      pr: 5,
+                      "&:hover": {
+                        color: "#5EC7AE",
+                        background: "transparent",
+                      },
+                    }}
+                    key={item.id}
+                  >
+                    {item.label}
+                  </Button>
+                );
               }
-              return (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{
-                    my: 2,
-                    color: "white",
-                    display: "block",
-                    textTransform: "capitalize",
-                    fontFamily: "Montserrat",
-                    pr: 5,
-                    "&:hover": {
-                      color: "#5EC7AE",
-                      background: "transparent",
-                    },
-                  }}
-                >
-                  {page}
-                </Button>
-              );
             })}
+
           </Box>
 
           <Paper
@@ -207,13 +236,15 @@ const NavbarPage = () => {
               sx={{
                 ml: 1,
                 flex: 1,
-                fontSize: "12px",
+                fontSize: "14px",
                 fontFamily: "Montserrat",
+                fontWeight: 400,
+                lineHeight: "normal",
               }}
-              placeholder="Search projects..."
+              placeholder="Search projects"
               inputProps={{
                 "aria-label": "search google maps",
-                style: { color: "#6C757D" },
+                style: { color: mode === "light" ? "#29CC7A" : "#6C757D" },
               }}
             />
             <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
@@ -230,11 +261,30 @@ const NavbarPage = () => {
                 padding: "13.5px 24.61px 13.5px 25.39px",
                 fontFamily: "Roboto Mono",
                 fontWeight: "700",
+
+                "&:hover": {
+                  color:
+                    mode === "light"
+                      ? "rgba(0, 0, 0, 0.90)"
+                      : "rgba(255, 255, 255, 0.90)",
+                      border: "1px solid #65CAAB"
+                },
               }}
               onClick={handleSignin}
             >
               Sign In
             </Button>
+
+            <IconButton
+              onClick={colorMode.toggleColorMode}
+              sx={{ ml: 1, color: mode === "light" ? "#000F08" : "#fff" }}
+            >
+              {theme.palette.mode === "#000F08" ? (
+                <Brightness7 />
+              ) : (
+                <Brightness4 />
+              )}
+            </IconButton>
           </Box>
         </Toolbar>
       </Container>

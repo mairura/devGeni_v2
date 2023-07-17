@@ -16,6 +16,7 @@ import { HeroButton } from "../../../common/Home/ButtonsPage";
 import Image from "next/image";
 import FooterPage from "../../../components/Home/FooterPage";
 import { ProjectData } from "../../../components/Home/Data";
+import { Fade } from "react-awesome-reveal";
 
 const developer = () => {
   const router = useRouter();
@@ -27,6 +28,7 @@ const developer = () => {
         <Container maxWidth="xl">
           <HeroContainer>
             <HeroSection>
+            <Fade direction="up" cascade damping={0.5}>
               <HeroTitle>
                 Join <span style={{ color: "#29CC7A" }}>2000+</span> Developers
                 & Get Started as a
@@ -42,6 +44,7 @@ const developer = () => {
                 <HeroButton>Sign In with google</HeroButton>
                 <HeroButton>Sign In with GITHUB</HeroButton>
               </HeroButtons>
+              </Fade>
             </HeroSection>
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <Image

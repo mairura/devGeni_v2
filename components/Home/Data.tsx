@@ -1,3 +1,5 @@
+import { ProjectType } from "@/types";
+
 export const ServiceData = [
   {
     imageSrc: "/Talent.svg",
@@ -92,71 +94,80 @@ export const ProjectsDetails = [
     img: "/Rectangle.png",
     name: "Diani App",
     status: "lastmile",
-    description: "Diani app, a product from LaLo Communities,is a last mile web application that enables tourists both local and international to spend their holiday in Diani...",
+    description:
+      "Diani app, a product from LaLo Communities,is a last mile web application that enables tourists both local and international to spend their holiday in Diani...",
   },
   {
     img: "/Rectangle.png",
     name: "Minitrader",
     status: "AI trading Platform",
-    description: "Diani app, a product from LaLo Communities,is a last mile web application that enables tourists both local and international to spend their holiday in Diani...",
+    description:
+      "Diani app, a product from LaLo Communities,is a last mile web application that enables tourists both local and international to spend their holiday in Diani...",
   },
   {
     img: "/Rectangle.png",
     name: "Minitrader",
     status: "AI trading Platform",
-    description: "Diani app, a product from LaLo Communities,is a last mile web application that enables tourists both local and international to spend their holiday in Diani...",
+    description:
+      "Diani app, a product from LaLo Communities,is a last mile web application that enables tourists both local and international to spend their holiday in Diani...",
   },
   {
     img: "/Rectangle.png",
     name: "Minitrader",
     status: "AI trading Platform",
-    description: "Diani app, a product from LaLo Communities,is a last mile web application that enables tourists both local and international to spend their holiday in Diani...",
+    description:
+      "Diani app, a product from LaLo Communities,is a last mile web application that enables tourists both local and international to spend their holiday in Diani...",
   },
   {
     img: "/Rectangle.png",
     name: "Minitrader",
     status: "AI trading Platform",
-    description: "Diani app, a product from LaLo Communities,is a last mile web application that enables tourists both local and international to spend their holiday in Diani...",
+    description:
+      "Diani app, a product from LaLo Communities,is a last mile web application that enables tourists both local and international to spend their holiday in Diani...",
   },
   {
     img: "/Rectangle.png",
     name: "Minitrader",
     status: "AI trading Platform",
-    description: "Diani app, a product from LaLo Communities,is a last mile web application that enables tourists both local and international to spend their holiday in Diani...",
-  }
-]
+    description:
+      "Diani app, a product from LaLo Communities,is a last mile web application that enables tourists both local and international to spend their holiday in Diani...",
+  },
+];
 
 export const TagList = [
   {
-    name: "Solidity"
+    name: "Solidity",
   },
   {
-    name: "ReactJS"
+    name: "ReactJS",
   },
   {
-    name: "NextJS"
+    name: "NextJS",
   },
   {
-    name: "Typescript"
+    name: "Typescript",
   },
   {
-    name: "AI Bots"
+    name: "AI Bots",
   },
-
-]
+];
 
 export const TagHashtags = [
   {
-    name: "trading"
+    name: "trading",
   },
   {
-    name: "crypto"
+    name: "crypto",
   },
   {
-    name: "bots"
+    name: "bots",
   },
   {
-    name: "AI"
+    name: "AI",
   },
+];
 
-]
+export const ProjectImages: ProjectType[] = [
+  { url: "/Link.svg", alt: "Potara" },
+  { url: "/Proxy.svg", alt: "Diani App" },
+];
