@@ -18,6 +18,7 @@ import Image from "next/image";
 import { AuthContext } from "@/context/AuthContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { ColorModeContext } from "@/pages";
 
 const items = [
   { id: 1, label: "Home", url: "/" },
@@ -50,6 +51,7 @@ const NavbarPage = ({ theme, colorMode, mode }: any) => {
     login();
   };
   
+  const { toggleColorMode } = useContext(ColorModeContext);
 
   return (
     <AppBar
@@ -273,16 +275,16 @@ const NavbarPage = ({ theme, colorMode, mode }: any) => {
               Sign In
             </Button>
 
-            {/* <IconButton
-              onClick={colorMode.toggleColorMode}
+            <IconButton
+              onClick={toggleColorMode}
               sx={{ ml: 1, color: mode === "light" ? "#000F08" : "#fff" }}
             >
-              {theme.palette.mode === "#000F08" ? (
+              {mode === "#000F08" ? (
                 <Brightness7 />
               ) : (
                 <Brightness4 />
               )}
-            </IconButton> */}
+            </IconButton>
           </Box>
         </Toolbar>
       </Container>

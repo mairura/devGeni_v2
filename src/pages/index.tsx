@@ -14,7 +14,7 @@ import { Brightness4, Brightness7 } from "@mui/icons-material";
 import FooterPage from "../../components/Home/FooterPage";
 import SkillPage from "../../components/Home/SkillPage";
 
-const ColorModeContext = createContext({ toggleColorMode: () => {} });
+export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 
 function MyApp() {
